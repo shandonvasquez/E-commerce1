@@ -119,7 +119,7 @@ addToCartButtons.forEach(button => {
     }, 0);
 
     if (numItemsInCart >= maxItemsPerProduct) {
-      alert(`You can only have up to ${maxItemsPerProduct} of this product in the cart.`);
+      alert(`Sorry, We are running out stock ${maxItemsPerProduct} `);
       return;
     }
 
