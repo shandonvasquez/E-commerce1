@@ -1388,7 +1388,7 @@ body {
 /*Darck mode*/
 
 .dark-mode {
-  background-color: #333;
+  background-color: #000000;
   color: #fff;
 }
 
@@ -1399,6 +1399,7 @@ body {
 .dark-mode .header-top{
   background-color: #fff;
 }
+
 .dark-mode .footer-link, .footer-list-text, .newsletter-text{
   color: #141414;
 }
@@ -1406,20 +1407,72 @@ body {
   background-color:white;
 }
 .dark-mode section {
-  background-color: #2b2626;
+  background-color: #000000;
 }
 
 .dark-mode .hero-text{
   color: #000000;
 }
 
+.dark-mode .section-title {
+  color: white;
+}
+.dark-mode .card-title{
+  color: white;
+}
+
+.dark-mode .price .span {
+  color: rgb(150, 150, 150);
+}
+.dark-mode .footer {
+  background-color: black;
+  color: white;
+}
+
+.dark-mode .footer-list-title {
+  color: white;
+}
+
+.dark-mode .footer-list-text {
+  color: white;
+}
+
+.dark-mode .footer-link {
+  color: white;
+}
+
+.dark-mode .newsletter-title {
+  color: white;
+}
+
+.dark-mode .newsletter-text {
+  color: white;
+}
+
+.dark-mode .email-field {
+  background-color: black;
+  color: white;
+}
+
+.dark-mode .btn-primary {
+  background-color: white;
+  color: black;
+}
+
+.dark-mode .social-link {
+  color: white;
+}
+.dark-mode .card-title {
+  color: rgb(0, 0, 0);
+}
+
 
 /* Add dark mode styles for other elements */
+/*shopping card*/
 
 #cart {
   text-align: center;
 }
-
 
 #cart-items {
   display: flex;
@@ -1427,10 +1480,30 @@ body {
   align-items: center;
 }
 
+
+#cart-items li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  word-spacing: 5px; /* Adjust the value as needed */
+}
+
+
+.item-price {
+  margin-left: 10px; /* Adjust the value as needed */
+}
+
 .action-btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px; /* Add margin between items if desired */
+   /* Add margin between items if desired */
   
 } 
+
+.quantity {
+  margin-right: 100px;
+  margin-left: 40px;
+}

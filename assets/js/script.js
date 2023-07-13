@@ -138,17 +138,17 @@ addToCartButtons.forEach(button => {
       newItem.dataset.title = itemTitle;
       newItem.dataset.quantity = 1;
       newItem.innerHTML = `
-        <span class="item-title">${itemTitle}</span>
-        <span class="item-price">${itemPrice}</span>
+      <span class="item-title">${itemTitle} </span>
+      <span class="item-price">${itemPrice}  </span>
         <span class="cart-item">
-        <p class="quantity">1</p>
-  <button class="action-btn remove-from-cart" aria-label="remove from cart">
-    <ion-icon name="trash-outline" aria-hidden="true"></ion-icon>
-  </button>
-</span>
-
+          <span class="quantity">1</span>
+        </span> 
+        <button class="action-btn remove-from-cart" aria-label="remove from cart">
+        <ion-icon name="trash-outline" aria-hidden="true"></ion-icon>
+      </button>
       `;
       cartItems.appendChild(newItem);
+      
     }
   });
 });
