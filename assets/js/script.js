@@ -182,3 +182,26 @@ darkModeButton.addEventListener('click', () => {
     document.querySelector(element).classList.toggle('dark-mode');
   });
 });
+
+
+///loading
+
+// Show the loading screen
+function showLoadingScreen() {
+  const loadingScreen = document.querySelector('.loading-screen');
+  loadingScreen.style.display = 'flex';
+}
+
+// Hide the loading screen
+function hideLoadingScreen() {
+  const loadingScreen = document.querySelector('.loading-screen');
+  loadingScreen.style.display = 'none';
+}
+
+// Call the showLoadingScreen function when your page is loading or performing an asynchronous task
+showLoadingScreen();
+
+// Call the hideLoadingScreen function when your content has finished loading or when the task is complete
+// For example, inside the window.onload event or after an AJAX request
+hideLoadingScreen();
+
