@@ -97,12 +97,46 @@ scrollReveal();
 addEventOnElem(window, "scroll", scrollReveal);
 
 /////////////////////////////////////////
-// SHOPPING CART
+// SHOPPING CART//
 
 const cartItems = document.querySelector('#cart-items');
 const addToCartButtons = document.querySelectorAll('.action-btn');
 const maxItemsPerProduct = 5;
 
+// Function to update cart items in local storage
+function updateCartItemsInStorage() {
+  const items = [...cartItems.children].map(item => ({
+    title: item.dataset.title,
+    quantity: parseInt(item.dataset.quantity),
+  }));
+  localStorage.setItem('cartItems', JSON.stringify(items));
+}
+
+// Load cart items from local storage
+function loadCartItemsFromStorage() {
+  const storedItems = localStorage.getItem('cartItems');
+  if (storedItems) {
+    const items = JSON.parse(storedItems);
+    items.forEach(item => {
+      const newItem = document.createElement('li');
+      newItem.dataset.title = item.title;
+      newItem.dataset.quantity = item.quantity;
+      newItem.innerHTML = `
+        <span class="item-title">${item.title}</span>
+        <span class="item-price">${item.price}</span>
+        <span class="cart-item">
+          <span class="quantity">${item.quantity}</span>
+        </span> 
+        <button class="action-btn remove-from-cart" aria-label="remove from cart">
+          <ion-icon name="trash-outline" aria-hidden="true"></ion-icon>
+        </button>
+      `;
+      cartItems.appendChild(newItem);
+    });
+  }
+}
+
+// Add event listener to "Add to Cart" buttons//
 addToCartButtons.forEach(button => {
   button.addEventListener('click', () => {
     // Get the name and price of the item
@@ -119,7 +153,7 @@ addToCartButtons.forEach(button => {
     }, 0);
 
     if (numItemsInCart >= maxItemsPerProduct) {
-      alert(`Sorry, We are running out stock ${maxItemsPerProduct} `);
+      alert(`Sorry we are out of stock of ${itemTitle}.`);
       return;
     }
 
@@ -138,21 +172,24 @@ addToCartButtons.forEach(button => {
       newItem.dataset.title = itemTitle;
       newItem.dataset.quantity = 1;
       newItem.innerHTML = `
-      <span class="item-title">${itemTitle} </span>
-      <span class="item-price">${itemPrice}  </span>
+        <span class="item-title">${itemTitle}</span>
+        <span class="item-price">${itemPrice}</span>
         <span class="cart-item">
           <span class="quantity">1</span>
         </span> 
         <button class="action-btn remove-from-cart" aria-label="remove from cart">
-        <ion-icon name="trash-outline" aria-hidden="true"></ion-icon>
-      </button>
+          <ion-icon name="trash-outline" aria-hidden="true"></ion-icon>
+        </button>
       `;
       cartItems.appendChild(newItem);
-      
     }
+
+    // Update cart items in local storage
+    updateCartItemsInStorage();
   });
 });
 
+// Add event listener to "Remove from Cart" buttons
 document.addEventListener('click', (event) => {
   if (event.target.matches('.remove-from-cart')) {
     const itemTitle = event.target.closest('li').dataset.title;
@@ -167,9 +204,14 @@ document.addEventListener('click', (event) => {
         cartItems.removeChild(existingItem);
       }
     }
+
+    // Update cart items in local storage
+    updateCartItemsInStorage();
   }
 });
 
+// Load cart items from local storage when the page loads
+loadCartItemsFromStorage();
 
 
 

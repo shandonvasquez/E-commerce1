@@ -1401,7 +1401,7 @@ body {
 }
 
 .dark-mode .footer-link, .footer-list-text, .newsletter-text{
-  color: #141414;
+  color: #fffefe;
 }
 .dark-mode .nav-open-btn, .action-btn{
   background-color:white;
@@ -1463,7 +1463,7 @@ body {
   color: white;
 }
 .dark-mode .card-title {
-  color: rgb(0, 0, 0);
+  color: rgb(163, 163, 163);
 }
 
 
