@@ -108,8 +108,20 @@ function updateCartItemsInStorage() {
   const items = [...cartItems.children].map(item => ({
     title: item.dataset.title,
     quantity: parseInt(item.dataset.quantity),
+    price: parseFloat(item.querySelector('.item-price').textContent.replace('$', '')), // Extract numeric price value
   }));
   localStorage.setItem('cartItems', JSON.stringify(items));
+}
+
+// Function to update the total price
+function updateTotalPrice() {
+  const totalPriceElement = document.querySelector('#total-price');
+  const totalPrice = [...cartItems.children].reduce((total, item) => {
+    const price = parseFloat(item.querySelector('.item-price').textContent.replace('$', ''));
+    const quantity = parseInt(item.dataset.quantity);
+    return total + price * quantity;
+  }, 0);
+  totalPriceElement.textContent = `$${totalPrice.toFixed(2)}`;
 }
 
 // Load cart items from local storage
@@ -123,20 +135,23 @@ function loadCartItemsFromStorage() {
       newItem.dataset.quantity = item.quantity;
       newItem.innerHTML = `
         <span class="item-title">${item.title}</span>
-        <span class="item-price">${item.price}</span>
+        <span class="item-price">$${item.price.toFixed(2)}</span>
         <span class="cart-item">
           <span class="quantity">${item.quantity}</span>
         </span> 
         <button class="action-btn remove-from-cart" aria-label="remove from cart">
-          <ion-icon name="trash-outline" aria-hisdden="true"></ion-icon>
+          <ion-icon name="trash-outline" aria-hidden="true"></ion-icon>
         </button>
       `;
       cartItems.appendChild(newItem);
     });
+
+    // Update total price when loading cart items
+    updateTotalPrice();
   }
 }
 
-// Add event listener to "Add to Cart" buttons//
+// Add event listener to "Add to Cart" buttons
 addToCartButtons.forEach(button => {
   button.addEventListener('click', () => {
     // Get the name and price of the item
@@ -173,7 +188,7 @@ addToCartButtons.forEach(button => {
       newItem.dataset.quantity = 1;
       newItem.innerHTML = `
         <span class="item-title">${itemTitle}</span>
-        <span class="item-price">${itemPrice}</span>
+        <span class="item-price">$${parseFloat(itemPrice.replace('$', '')).toFixed(2)}</span>
         <span class="cart-item">
           <span class="quantity">1</span>
         </span> 
@@ -186,6 +201,9 @@ addToCartButtons.forEach(button => {
 
     // Update cart items in local storage
     updateCartItemsInStorage();
+
+    // Update total price
+    updateTotalPrice();
   });
 });
 
@@ -207,11 +225,15 @@ document.addEventListener('click', (event) => {
 
     // Update cart items in local storage
     updateCartItemsInStorage();
+
+    // Update total price
+    updateTotalPrice();
   }
 });
 
 // Load cart items from local storage when the page loads
 loadCartItemsFromStorage();
+
 
 
 
