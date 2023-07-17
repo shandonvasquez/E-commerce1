@@ -128,7 +128,7 @@ function loadCartItemsFromStorage() {
           <span class="quantity">${item.quantity}</span>
         </span> 
         <button class="action-btn remove-from-cart" aria-label="remove from cart">
-          <ion-icon name="trash-outline" aria-hidden="true"></ion-icon>
+          <ion-icon name="trash-outline" aria-hisdden="true"></ion-icon>
         </button>
       `;
       cartItems.appendChild(newItem);
@@ -240,10 +240,6 @@ function hideLoadingScreen() {
   loadingScreen.style.display = 'none';
 }
 
-// Call the showLoadingScreen function when your page is loading or performing an asynchronous task
 showLoadingScreen();
 
-// Call the hideLoadingScreen function when your content has finished loading or when the task is complete
-// For example, inside the window.onload event or after an AJAX request
 hideLoadingScreen();
-

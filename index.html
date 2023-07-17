@@ -39,9 +39,9 @@
   <!-- 
     - #HEADER
   -->
-  <div class="loading-screen">
+  <!-- <div class="loading-screen">
     <img src="./assets/Ghost.gif" alt="Loading" class="loading-gift">
-  </div>
+  </div> -->
   
   <header class="header">
 
@@ -50,7 +50,6 @@
         <p class="alert-text">Free Shipping On All U.S. Orders $50+</p>
       </div>
     </div>
-
     <div class="header-top" data-header>
       <div class="container">
 
@@ -73,8 +72,10 @@
         </a>
 
         <div class="header-actions">
-          <button id="dark-mode-button">Dark Mode</button>
+          <button class="nav-open-btn" aria-label="open menu" data-nav-toggler><ion-icon name="cart" aria-hidden="true" role="img" class="md hydrated"></ion-icon>
+            <button id="dark-mode-button">Dark Mode</button>
 
+          <!-- shopping car -->
           <button class="header-action-btn" aria-label="user">
             <ion-icon name="person-outline" aria-hidden="true" aria-hidden="true"></ion-icon>
           </button>
@@ -170,7 +171,13 @@
         </li>
 
       </ul>
-
+      Shopping Car
+      <section id='cart'>
+        <h2>Shoping Car</h2>
+        <ul id='cart-items'>
+          <!-- List of cart items will be added here -->
+        </ul>
+      </section>
     </div>
 
     <div class="overlay" data-nav-toggler data-overlay></div>
@@ -1039,13 +1046,8 @@
         </div>
       </section>
 
-          <!-- Cart section -->
-          <section id='cart'>
-            <h2>Shoping Car</h2>
-            <ul id='cart-items'>
-              <!-- List of cart items will be added here -->
-            </ul>
-          </section>
+          <!--Shopping car section -->
+          
       
        
 
