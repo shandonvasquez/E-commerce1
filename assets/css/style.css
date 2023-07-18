@@ -1189,7 +1189,7 @@ body {
  
  
 /* Dark mode */
-/* Primary dark mode styles */
+
 .dark-mode {
   background-color: #000000;
   color: #fff;
@@ -1414,4 +1414,12 @@ body {
   100% {
     -o-transform: rotate(360deg);
   }
+}
+
+
+/*totalprice */
+
+.moveR{
+  display: flex; 
+  justify-content: flex-end;
 }
