@@ -267,30 +267,4 @@ showLoadingScreen();
 
 hideLoadingScreen();
 
-
-
-
-
-
-//////the new code
-
-// function addToCart(elem) {
-//   //init
-//   var sibs = [];
-//   var getprice;
-//   var getproductName; // Update this variable name to getproductName
-//   var cart = [];
-//   var stringCart;
-//   //cycles siblings for product info near the add button
-//   while (elem = elem.previousSibling) {
-//     if (elem.nodeType === 3) continue; // text node
-//     if (elem.className == "price") {
-//       getprice = elem.innerText;
-//     }
-//     if (elem.className == "action-btn") { // Update this line to check for "action-btn" class
-//       getproductName = elem.innerText; // Update this line to set the product name
-//     }
-//     sibs.push(elem);
-//   }
-//   // Rest of the function remains the same...
-// }
+///form validation
