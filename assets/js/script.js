@@ -1,11 +1,8 @@
 'use strict';
 
-
-
 /**
  * add event on element
  */
-
 const addEventOnElem = function (elem, type, callback) {
   if (elem.length > 1) {
     for (let i = 0; i < elem.length; i++) {
@@ -14,9 +11,7 @@ const addEventOnElem = function (elem, type, callback) {
   } else {
     elem.addEventListener(type, callback);
   }
-}
-
-
+};
 
 /**
  * navbar toggle
@@ -26,22 +21,16 @@ const navTogglers = document.querySelectorAll("[data-nav-toggler]");
 const navbar = document.querySelector("[data-navbar]");
 const navbarLinks = document.querySelectorAll("[data-nav-link]");
 const overlay = document.querySelector("[data-overlay]");
-
 const toggleNavbar = function () {
   navbar.classList.toggle("active");
   overlay.classList.toggle("active");
-}
-
+};
 addEventOnElem(navTogglers, "click", toggleNavbar);
-
 const closeNavbar = function () {
   navbar.classList.remove("active");
   overlay.classList.remove("active");
-}
-
+};
 addEventOnElem(navbarLinks, "click", closeNavbar);
-
-
 
 /**
  * header sticky & back top btn active
@@ -49,7 +38,6 @@ addEventOnElem(navbarLinks, "click", closeNavbar);
 
 const header = document.querySelector("[data-header]");
 const backTopBtn = document.querySelector("[data-back-top-btn]");
-
 const headerActive = function () {
   if (window.scrollY > 150) {
     header.classList.add("active");
@@ -58,42 +46,32 @@ const headerActive = function () {
     header.classList.remove("active");
     backTopBtn.classList.remove("active");
   }
-}
-
+};
 addEventOnElem(window, "scroll", headerActive);
-
 let lastScrolledPos = 0;
-
 const headerSticky = function () {
   if (lastScrolledPos >= window.scrollY) {
     header.classList.remove("header-hide");
   } else {
     header.classList.add("header-hide");
   }
-
   lastScrolledPos = window.scrollY;
-}
-
+};
 addEventOnElem(window, "scroll", headerSticky);
-
-
 
 /**
  * scroll reveal effect
  */
 
 const sections = document.querySelectorAll("[data-section]");
-
 const scrollReveal = function () {
   for (let i = 0; i < sections.length; i++) {
     if (sections[i].getBoundingClientRect().top < window.innerHeight / 2) {
       sections[i].classList.add("active");
     }
   }
-}
-
+};
 scrollReveal();
-
 addEventOnElem(window, "scroll", scrollReveal);
 
 /////////////////////////////////////////
@@ -108,8 +86,9 @@ function updateCartItemsInStorage() {
   const items = [...cartItems.children].map(item => ({
     title: item.dataset.title,
     quantity: parseInt(item.dataset.quantity),
-    price: parseFloat(item.querySelector('.item-price').textContent.replace('$', '')), // Extract numeric price value
+    price: parseFloat(item.querySelector('.item-price').textContent.replace('$', '')) // Extract numeric price value
   }));
+
   localStorage.setItem('cartItems', JSON.stringify(items));
 }
 
@@ -166,7 +145,6 @@ addToCartButtons.forEach(button => {
       }
       return total;
     }, 0);
-
     if (numItemsInCart >= maxItemsPerProduct) {
       alert(`Sorry we are out of stock of ${itemTitle}.`);
       return;
@@ -174,7 +152,6 @@ addToCartButtons.forEach(button => {
 
     // Check if the item already exists in the cart
     const existingItem = [...cartItems.children].find(item => item.dataset.title === itemTitle);
-
     if (existingItem) {
       // Item already exists, update the quantity
       const quantityElement = existingItem.querySelector('.quantity');
@@ -208,7 +185,7 @@ addToCartButtons.forEach(button => {
 });
 
 // Add event listener to "Remove from Cart" buttons
-document.addEventListener('click', (event) => {
+document.addEventListener('click', event => {
   if (event.target.matches('.remove-from-cart')) {
     const itemTitle = event.target.closest('li').dataset.title;
     const existingItem = [...cartItems.children].find(item => item.dataset.title === itemTitle);
@@ -236,18 +213,14 @@ loadCartItemsFromStorage();
 
 ///thi is the part to the total
 
-
-
 /// dark mode
 const darkModeButton = document.getElementById('dark-mode-button');
 const elementsToToggle = ['body', 'section', 'div', 'span', 'button'];
-
 darkModeButton.addEventListener('click', () => {
   elementsToToggle.forEach(element => {
     document.querySelector(element).classList.toggle('dark-mode');
   });
 });
-
 
 ///loading
 
@@ -262,9 +235,7 @@ function hideLoadingScreen() {
   const loadingScreen = document.querySelector('.loading-screen');
   loadingScreen.style.display = 'none';
 }
-
 showLoadingScreen();
-
 hideLoadingScreen();
 
 ///form validation
